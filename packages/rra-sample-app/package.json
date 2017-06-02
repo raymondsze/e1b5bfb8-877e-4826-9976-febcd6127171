@@ -1,0 +1,52 @@
+{
+  "name": "sample-app",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ../rra-scripts/bin/rra-scripts start",
+    "start:server": "node ../rra-scripts/bin/rra-scripts start:server",
+    "build": "node ../rra-scripts/bin/rra-scripts build",
+    "build:dll": "node ../rra-scripts/bin/rra-scripts build:dll",
+    "build:server": "node ../rra-scripts/bin/rra-scripts build:server"
+  },
+  "dependencies": {
+    "apollo-client": "^1.2.2",
+    "cheerio": "^0.22.0",
+    "classnames": "^2.2.5",
+    "express": "^4.15.2",
+    "flexboxgrid": "^6.3.1",
+    "history": "^4.6.1",
+    "immutable": "^3.8.1",
+    "intl": "^1.2.5",
+    "intl-locales-supported": "^1.0.0",
+    "node-emoji": "^1.5.1",
+    "ora": "^1.2.0",
+    "prop-types": "^15.5.8",
+    "react": "^15.5.4",
+    "react-apollo": "^1.2.0",
+    "react-async-bootstrapper": "^1.1.1",
+    "react-async-component": "^1.0.0-beta.3",
+    "react-dom": "^15.5.4",
+    "react-helmet": "^5.0.3",
+    "react-intl": "^2.2.3",
+    "react-redux": "^5.0.4",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
+    "react-router-redux": "next",
+    "redux": "^3.6.0",
+    "redux-actions": "^2.0.3",
+    "redux-form": "^6.6.3",
+    "redux-immutable": "^4.0.0",
+    "redux-saga": "^0.15.3",
+    "reselect": "^3.0.0",
+    "sanitize.css": "^5.0.0",
+    "semantic-ui-css": "^2.2.10",
+    "semantic-ui-react": "^0.68.3",
+    "source-map-support": "^0.4.15",
+    "styled-components": "2.0.0-17"
+  },
+  "devDependencies": {
+    "react-hot-loader": "2"
+  }
+}
