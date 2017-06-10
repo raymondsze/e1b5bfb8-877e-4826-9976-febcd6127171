@@ -11,10 +11,11 @@ switch (script) {
   case 'eject':
   case 'start':
   case 'start:server':
+  case 'translate':
   case 'test': {
     const result = spawn.sync(
       'node',
-      [require.resolve('../scripts/' + script)].concat(args),
+      [require.resolve('../scripts/' + script.replace(/:/g, '_'))].concat(args),
       { stdio: 'inherit' }
     );
     if (result.signal) {

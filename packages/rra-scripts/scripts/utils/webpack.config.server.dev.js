@@ -1,3 +1,5 @@
+require('./languages');
+
 const clone = require('clone');
 const fs = require('fs');
 const path = require('path');

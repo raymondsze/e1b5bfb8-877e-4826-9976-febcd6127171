@@ -15,10 +15,10 @@ const getDllHash = require('./getDllHash');
 const location = 'react-scripts/config/webpack.config.prod';
 const config = require(location);
 // do the config modification
-
+entry = config.entry;
 config.entry = {
   vendor: [paths.appVendorJs],
-  index: [require.resolve('./polyfill')].concat(config.entry),
+  index: [path.join(paths.appBuild, 'bootstrap.js')],
 };
 
 // get the css loader rule
@@ -141,4 +141,7 @@ if (hasVendorJs) {
   ]);
 }
 require.cache[require.resolve(location)].exports = config;
+
+require('./bootstrap')(entry.index, path.join(paths.appBuild, 'bootstrap.js', config.target));
+
 module.exports = config;

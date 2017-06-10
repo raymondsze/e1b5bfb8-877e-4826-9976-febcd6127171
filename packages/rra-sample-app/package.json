@@ -5,11 +5,17 @@
   "license": "MIT",
   "scripts": {
     "start": "node ../rra-scripts/bin/rra-scripts start",
+    "translate": "node ../rra-scripts/bin/rra-scripts translate",
     "start:server": "node ../rra-scripts/bin/rra-scripts start:server",
     "build": "node ../rra-scripts/bin/rra-scripts build",
     "build:dll": "node ../rra-scripts/bin/rra-scripts build:dll",
     "build:server": "node ../rra-scripts/bin/rra-scripts build:server"
   },
+  "languages": [
+    "en",
+    "zh-Hans",
+    "zh-Hant"
+  ],
   "dependencies": {
     "apollo-client": "^1.2.2",
     "cheerio": "^0.22.0",
@@ -45,8 +51,5 @@
     "semantic-ui-react": "^0.68.3",
     "source-map-support": "^0.4.15",
     "styled-components": "2.0.0-17"
-  },
-  "devDependencies": {
-    "react-hot-loader": "2"
   }
 }
