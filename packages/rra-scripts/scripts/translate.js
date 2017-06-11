@@ -32,6 +32,8 @@ if (!isValid) {
 console.log(`Languages found: ${languages.map(lang => `${chalk.cyan(lang)}`).join(', ')}`);
 console.log();
 
+// make use of react-intl-translation-manager to translate all the messages
+// https://github.com/GertjanReynaert/react-intl-translations-manager
 manageTranslations({
   messagesDirectory: paths.appMessagesDir,
   translationsDirectory: paths.appTranslationsDir,

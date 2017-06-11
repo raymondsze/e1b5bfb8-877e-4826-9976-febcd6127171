@@ -9,7 +9,7 @@ const getLocale = createSelector(
 
 const getLocaleMessages = createSelector(
   getLanguage,
-  languageState => languageState.get('messages')
+  languageState => languageState.get('messages').toJS()
 );
 
 export {

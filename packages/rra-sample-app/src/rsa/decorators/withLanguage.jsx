@@ -2,17 +2,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import { localeChangeRequest } from '../containers/LanguageProvider/actions';
-import { getLanguage } from '../containers/LanguageProvider/selectors';
+import { localeChange } from '../containers/LanguageProvider/actions';
+import { getLocale, getLocaleMessages } from '../containers/LanguageProvider/selectors';
 
 const mapStateToProps = createSelector(
-  getLanguage,
-  ({ locale, messages }) => ({ locale, messages })
+  getLocale,
+  getLocaleMessages,
+  (locale, messages) => ({ locale, messages })
 );
 
 function mapDispatchToProps(dispatch) {
   return {
-    changeLocale: locale => dispatch(localeChangeRequest(locale)),
+    changeLocale: locale => dispatch(localeChange(locale)),
   };
 }
 

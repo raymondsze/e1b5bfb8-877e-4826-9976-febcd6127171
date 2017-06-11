@@ -5,18 +5,16 @@ import { connect } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 
 import reducers from './reducers';
-import sagas from './sagas';
 import { getLocale, getLocaleMessages } from './selectors';
 import { withReducers, withSagas } from '../../decorators';
 
 const mapStateToProps = createSelector(
   getLocale,
   getLocaleMessages,
-  ({ locale, messages }) => ({ locale, messages })
+  (locale, messages) => ({ locale, messages })
 );
 
 @withReducers(reducers)
-@withSagas(sagas)
 @connect(mapStateToProps)
 class LanguageProvider extends PureComponent {
   static propTypes = {

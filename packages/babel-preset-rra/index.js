@@ -10,15 +10,7 @@ const env = process.env.BABEL_ENV || process.env.NODE_ENV;
 config.plugins.push(
   // Enable decorator syntax which could be heavy used by redux or mobx
   // https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy
-  require.resolve('babel-plugin-transform-decorators-legacy'),  
-  // Extracts string messages for translation from modules that use React Intl.
-  // https://github.com/yahoo/babel-plugin-react-intl
-  [
-    require.resolve('babel-plugin-react-intl', {
-      // the output messages directory
-      "messagesDir": path.join(appDirectory, 'build/messages/'),
-    }),
-  ],
+  require.resolve('babel-plugin-transform-decorators-legacy'),
   // This plugin adds support for server-side rendering, for minification of styles
   // and gives you a nicer debugging experience when using styled-components.
   [

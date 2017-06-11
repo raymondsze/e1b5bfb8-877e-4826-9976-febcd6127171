@@ -19,9 +19,9 @@ paths.appBuild = path.join(paths.appBuild, 'app');
 // dll build folder, put inside node_modules/.cache
 paths.appDllBuild = path.join(paths.appNodeModules, '.cache', 'dll');
 // i18n messages folder
-paths.appMessagesDir = path.join(paths.appBuild, 'messages');
+paths.appMessagesDir = path.join(paths.appNodeModules, '.cache', 'intl');
 // i18n translation folder
-paths.appTranslationsDir = path.join(paths.appSrc, 'translations');
+paths.appTranslationsDir = path.join(paths.appSrc, '..', 'messages');
 require.cache[require.resolve(location)].exports = paths;
 
 module.exports = paths;

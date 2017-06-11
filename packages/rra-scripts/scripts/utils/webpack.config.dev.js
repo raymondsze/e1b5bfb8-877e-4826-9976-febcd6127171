@@ -14,9 +14,12 @@ const getDllHash = require('./getDllHash');
 const location = 'react-scripts/config/webpack.config.dev';
 const config = require(location);
 
+const checkLangauges = require('./checkLanguages');
+const bootstrap = require('./bootstrap');
+
 const entry = config.entry;
 // do the config modification
-config.entry = [path.join(paths.appBuild, 'bootstrap.js')];
+// config.entry = [path.join(paths.appBuild, '../bootstrap.js')];
 // get the css loader rule
 const cssRule = config.module.rules.find(
   rule => (rule.test instanceof RegExp && rule.test.source.indexOf('css$') !== -1)
@@ -85,7 +88,18 @@ const jsRule = config.module.rules.find(
     !rule.enforce
   )
 );
+jsRule.include = [jsRule.include, path.join(paths.appBuild, '..', 'bootstrap.js')];
 jsRule.options.presets = [require.resolve('babel-preset-rra')];
+jsRule.options.plugins = [
+  // Extracts string messages for translation from modules that use React Intl.
+  // https://github.com/yahoo/babel-plugin-react-intl
+  [
+    require.resolve('babel-plugin-react-intl'), {
+      // the output messages directory
+      "messagesDir": paths.appMessagesDir,
+    },
+  ],
+];
 
 // add graphql loader
 config.module.rules.push(
@@ -133,6 +147,8 @@ if (hasVendorJs) {
 
 require.cache[require.resolve(location)].exports = config;
 
-require('./bootstrap')(entry, path.join(paths.appBuild, 'bootstrap.js'), config.target);
+checkLangauges(paths);
+bootstrap(paths, entry, path.join(paths.appBuild, '../bootstrap.js'), config.target);
+config.entry = [require.resolve(path.join(paths.appBuild, '../bootstrap.js'))];
 
 module.exports = config;

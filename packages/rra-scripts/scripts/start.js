@@ -66,4 +66,5 @@ if (hasVendorJs) {
   console.log('This could minimize the time required for the bundling process in development.');
   process.exit(1);
 }
+
 require('react-scripts/scripts/start');

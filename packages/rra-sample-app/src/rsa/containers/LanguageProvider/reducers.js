@@ -3,25 +3,19 @@ import { handleActions } from 'redux-actions';
 
 import {
   DEFAULT_LOCALE,
-  LOCALE_CHANGE_SUCCESS,
-  LOCALE_CHANGE_FAILURE,
+  LOCALE_CHANGE,
 } from './constants';
 
 const initialState = fromJS({
   locale: DEFAULT_LOCALE,
+  messages: global.__messages__,
 });
 
 export default {
   language: handleActions({
-    [LOCALE_CHANGE_SUCCESS]: (state, { payload }) => {
+    [LOCALE_CHANGE]: (state, { payload }) => {
       return state
-        .delete('error')
-        .set('locale', payload.locale)
-        .set('messages', payload.messages);
+        .set('locale', payload.locale);
     },
-    [LOCALE_CHANGE_FAILURE]: (state, { payload }) => {
-      return state
-        .set('error', payload);
-    }, 
   }, initialState),
 };

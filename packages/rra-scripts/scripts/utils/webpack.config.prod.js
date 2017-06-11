@@ -14,11 +14,15 @@ const getDllHash = require('./getDllHash');
 
 const location = 'react-scripts/config/webpack.config.prod';
 const config = require(location);
+
+const checkLangauges = require('./checkLanguages');
+const bootstrap = require('./bootstrap');
+
 // do the config modification
-entry = config.entry;
+const entry = config.entry;
 config.entry = {
   vendor: [paths.appVendorJs],
-  index: [path.join(paths.appBuild, 'bootstrap.js')],
+  index: [path.join(paths.appBuild, '../bootstrap.js')],
 };
 
 // get the css loader rule
@@ -89,7 +93,18 @@ const jsRule = config.module.rules.find(
     !rule.enforce
   )
 );
+jsRule.include = [jsRule.include, path.join(paths.appBuild, '..', 'bootstrap.js')];
 jsRule.options.presets = [require.resolve('babel-preset-rra')];
+jsRule.options.plugins = [
+  // Extracts string messages for translation from modules that use React Intl.
+  // https://github.com/yahoo/babel-plugin-react-intl
+  [
+    require.resolve('babel-plugin-react-intl'), {
+      // the output messages directory
+      "messagesDir": paths.appMessagesDir,
+    },
+  ],
+];
 
 // add graphql loader
 config.module.rules.push(
@@ -115,9 +130,12 @@ config.plugins.push.apply(config.plugins, [
     const crypto = require('crypto');
     const pathDigest = crypto.createHash('md5');
     return chunk.modules
-      .map(m => path.relative(m.context, m.request))
-      .reduce((d, m )=> d.update(m), pathDigest)
-      .digest('base64');
+      .map(m => {
+        return path.relative(m.context, m.request || '');
+      })
+      .reduce((d, m)=> d.update(m), pathDigest)
+      .digest('base64')
+      .replace(/\\g/, '_');
   }),
   new NameAllModulesPlugin(),
   new webpack.LoaderOptionsPlugin({
@@ -142,6 +160,7 @@ if (hasVendorJs) {
 }
 require.cache[require.resolve(location)].exports = config;
 
-require('./bootstrap')(entry.index, path.join(paths.appBuild, 'bootstrap.js', config.target));
+checkLangauges(paths);
+bootstrap(paths, entry, path.join(paths.appBuild, '../bootstrap.js'), config.target);
 
 module.exports = config;
