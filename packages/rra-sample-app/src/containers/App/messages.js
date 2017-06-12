@@ -4,11 +4,10 @@ export default defineMessages({
   welcome: {
     id: 'app.welcome',
     defaultMessage: 'Welcome to React',
-    description: 'This is the app welcome message',
   },
   instruction: {
     id: 'app.instruction',
-    defaultMessage: 'To get started, edit {code} and save to reload.'
+    defaultMessage: 'To get started, edit {code} and save to reload.',
   },
   'languages-en': {
     id: 'app.languages.en',

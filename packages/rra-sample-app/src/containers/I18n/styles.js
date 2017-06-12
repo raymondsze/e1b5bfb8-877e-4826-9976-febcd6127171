@@ -11,9 +11,11 @@ export default styled.div`
       border: solid 1px gray;
       outline: none;
       color: black;
+
       &:hover {
         background: #60d7f8;
       }
+
       &.active {
         color: #60d7f8;
       }

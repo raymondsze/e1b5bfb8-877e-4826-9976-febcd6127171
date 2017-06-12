@@ -84,7 +84,6 @@ eslintRule.use[0].options.baseConfig = {
   extends: [require.resolve('eslint-config-rra')],
 };
 
-config.module.rules = config.module.rules.slice(1, config.module.rules.length);
 // get the js loader rule
 const jsRule = config.module.rules.find(
   rule => (

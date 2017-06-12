@@ -1,36 +1,24 @@
+import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import { injectIntl, defineMessages, FormattedMessage } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
+import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
-
-import { locale } from '../../rsa';
-import Routing from '../Routing';
 
 import logo from './logo.svg';
 import Div from './styles';
 import messages from './messages';
 
+@withRouter
 @injectIntl
-@locale
 class App extends PureComponent {
-  handleLangButtonClick = event => {
-    const { changeLocale } = this.props;
-    changeLocale(event.target.getAttribute('data-value'));
+  static propTypes = {
+    intl: PropTypes.shape({}).isRequired,
+    children: PropTypes.element.isRequired,
   }
-  renderLangButton(locale) {
-    const { intl } = this.props;
-    return (
-      <button
-        className="App-lang-btn"
-        onClick={this.handleLangButtonClick}
-        data-value={locale}
-      >
-        {intl.formatMessage(messages[`languages-${locale}`])}
-      </button>
-    );
-  }
+
   render() {
-    const { changeLocale, intl } = this.props;
+    const { intl, children } = this.props;
+    /* eslint-disable react/no-danger, react/no-danger-with-children*/
     return (
       <Div className="App">
         <div className="App-header">
@@ -42,17 +30,17 @@ class App extends PureComponent {
         <p
           className="App-intro"
           dangerouslySetInnerHTML={{
-            __html: intl.formatMessage(messages.instruction, { code: '<code>src/containers/App.js</code>'})
+            __html: intl.formatMessage(messages.instruction, { code: '<code>src/containers/App.js</code>' }),
           }}
-        >
-        </p>
+        />
         <div>
           <Link className="App-route" to="/">Home</Link>
           <Link className="App-route" to="/i18n">I18n</Link>
         </div>
-        <Routing />
+        {React.Children.only(children)}
       </Div>
-    )
+    );
+    /* eslint-enable react/no-danger, react/no-danger-with-children*/
   }
 }
 

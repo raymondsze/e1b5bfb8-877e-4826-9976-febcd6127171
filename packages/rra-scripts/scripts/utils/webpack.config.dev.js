@@ -8,6 +8,7 @@ const webpack = require('webpack');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const paths = require('./paths');
 const getDllHash = require('./getDllHash');
 
@@ -78,8 +79,8 @@ const eslintRule = config.module.rules.find(
 eslintRule.use[0].options.baseConfig = {
   extends: [require.resolve('eslint-config-rra')],
 };
+eslintRule.cache = true;
 
-config.module.rules = config.module.rules.slice(1, config.module.rules.length);
 // get the js loader rule
 const jsRule = config.module.rules.find(
   rule => (
@@ -122,6 +123,12 @@ config.plugins.push.apply(config.plugins, [
   new webpack.NamedModulesPlugin(),
   new ScriptExtHtmlWebpackPlugin({
     defaultAttribute: 'defer',
+  }),
+  new StyleLintPlugin({
+    files: [path.relative(process.cwd(), path.join(paths.appSrc, '**/*{js,jsx}'))],
+    config: {
+      extends: require.resolve('stylelint-config-rra'),
+    },
   }),
 ]);
 

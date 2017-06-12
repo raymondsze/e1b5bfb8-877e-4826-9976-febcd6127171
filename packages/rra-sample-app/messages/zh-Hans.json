@@ -4,5 +4,8 @@
   "app.languages.en": "English",
   "app.languages.zh_hans": "简体中文",
   "app.languages.zh_hant": "繁體中文",
-  "app.welcome": "欢迎来到React的世界！"
+  "app.welcome": "欢迎来到React的世界！",
+  "i18n.languages.en": "English",
+  "i18n.languages.zh_hans": "简体中文",
+  "i18n.languages.zh_hant": "繁體中文"
 }

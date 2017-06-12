@@ -1,18 +1,24 @@
+import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import { injectIntl, defineMessages, FormattedMessage } from 'react-intl';
+import { injectIntl } from 'react-intl';
 
-import { locale } from '../../rsa';
+import { withLocale } from '../../rsa';
 import Div from './styles';
 import messages from './messages';
 
 @injectIntl
-@locale
+@withLocale
 class I18n extends PureComponent {
-  handleLangButtonClick = event => {
+  static propTypes = {
+    intl: PropTypes.shape({}).isRequired,
+    changeLocale: PropTypes.func.isRequired,
+  }
+
+  handleLangButtonClick = (event) => {
     const { changeLocale } = this.props;
     changeLocale(event.target.getAttribute('data-value'));
   }
+
   renderLangButton(locale) {
     const { intl } = this.props;
     return (
@@ -25,15 +31,15 @@ class I18n extends PureComponent {
       </button>
     );
   }
+
   render() {
-    const { changeLocale, intl } = this.props;
     return (
       <Div className="I18n">
         {this.renderLangButton('en')}
         {this.renderLangButton('zh-Hans')}
         {this.renderLangButton('zh-Hant')}
       </Div>
-    )
+    );
   }
 }
 

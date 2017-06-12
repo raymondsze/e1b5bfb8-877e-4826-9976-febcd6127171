@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
@@ -8,7 +7,7 @@ import { getLocale, getLocaleMessages } from '../containers/LanguageProvider/sel
 const mapStateToProps = createSelector(
   getLocale,
   getLocaleMessages,
-  (locale, messages) => ({ locale, messages })
+  (locale, messages) => ({ locale, messages }),
 );
 
 function mapDispatchToProps(dispatch) {
@@ -17,8 +16,8 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-function withLanguage(Component) {
+function withLocale(Component) {
   return connect(mapStateToProps, mapDispatchToProps)(Component);
 }
 
-export default withLanguage;
+export default withLocale;
