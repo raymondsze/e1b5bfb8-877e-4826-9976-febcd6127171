@@ -1,9 +1,9 @@
-import withReducers from './withReducers';
-import withSagas from './withSagas';
-import withLanguage from './withLanguage';
+import injectReducers from './injectReducers';
+import injectSagas from './injectSagas';
+import locale from './locale';
 
 export {
-  withReducers,
-  withSagas,
-  withLanguage,
+  injectReducers,
+  injectSagas,
+  locale,
 };

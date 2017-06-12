@@ -1,3 +1,8 @@
 {
-  "app.hello": "Hello World"
+  "app.hello": "Hello World",
+  "app.instruction": "To get started, edit {code} and save to reload.",
+  "app.languages.en": "English",
+  "app.languages.zh_hans": "简体中文",
+  "app.languages.zh_hant": "繁體中文",
+  "app.welcome": "Welcome to React"
 }

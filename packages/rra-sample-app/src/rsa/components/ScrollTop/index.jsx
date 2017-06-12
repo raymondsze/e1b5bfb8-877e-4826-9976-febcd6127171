@@ -1,8 +1,9 @@
-import React, { PureComponent } from 'react';
-import { withRouter } from 'react-router'
+import React from 'react';
+import { withRouter } from 'react-router';
+import { Route } from 'react-router-dom';
 
 // Alternative solution of react-router-scroll for react-router v4
-class ScrollTop extends PureComponent {
+class ScrollTop extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
       // scroll to top if location is different
@@ -11,7 +12,8 @@ class ScrollTop extends PureComponent {
   }
 
   render() {
-    return this.props.children
+    const { children, location } = this.props;
+    return React.Children.only(children);
   }
 }
 

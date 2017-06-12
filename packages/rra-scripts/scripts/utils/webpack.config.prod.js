@@ -123,6 +123,8 @@ config.plugins.push(
   })
 );
 
+// implement long term caching with predictable hash
+// @see https://medium.com/webpack/predictable-long-term-caching-with-webpack-d3eee1d3fa31
 config.plugins.push.apply(config.plugins, [
   new webpack.NamedModulesPlugin(),
   new webpack.NamedChunksPlugin(chunk => {
@@ -145,6 +147,13 @@ config.plugins.push.apply(config.plugins, [
     defaultAttribute: 'defer',
   }),
 ]);
+
+// check if custom service-worker exists
+// implement the pwa service worker
+if (fs.existsSync(path.join(paths.appPublic, paths.appSwJs))) {
+  const swPrecacheWebpackPlugin = config.plugins.find(plugin => plugin.constructor.name === 'SWPrecacheWebpackPlugin');
+  swPrecacheWebpackPlugin.options.importScripts = [paths.appSwJs];
+}
 
 const hasVendorJs = fs.existsSync(paths.appVendorJs);
 if (hasVendorJs) {

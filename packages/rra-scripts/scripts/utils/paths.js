@@ -22,6 +22,9 @@ paths.appDllBuild = path.join(paths.appNodeModules, '.cache', 'dll');
 paths.appMessagesDir = path.join(paths.appNodeModules, '.cache', 'intl');
 // i18n translation folder
 paths.appTranslationsDir = path.join(paths.appSrc, '..', 'messages');
+// service worker entry point
+paths.appSwJs = 'sw.js';
+
 require.cache[require.resolve(location)].exports = paths;
 
 module.exports = paths;

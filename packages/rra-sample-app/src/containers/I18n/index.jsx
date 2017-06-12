@@ -1,18 +1,14 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { injectIntl, defineMessages, FormattedMessage } from 'react-intl';
-import { Link } from 'react-router-dom';
 
 import { locale } from '../../rsa';
-import Routing from '../Routing';
-
-import logo from './logo.svg';
 import Div from './styles';
 import messages from './messages';
 
 @injectIntl
 @locale
-class App extends PureComponent {
+class I18n extends PureComponent {
   handleLangButtonClick = event => {
     const { changeLocale } = this.props;
     changeLocale(event.target.getAttribute('data-value'));
@@ -32,28 +28,13 @@ class App extends PureComponent {
   render() {
     const { changeLocale, intl } = this.props;
     return (
-      <Div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>
-            <FormattedMessage {...messages.welcome} />
-          </h2>
-        </div>
-        <p
-          className="App-intro"
-          dangerouslySetInnerHTML={{
-            __html: intl.formatMessage(messages.instruction, { code: '<code>src/containers/App.js</code>'})
-          }}
-        >
-        </p>
-        <div>
-          <Link className="App-route" to="/">Home</Link>
-          <Link className="App-route" to="/i18n">I18n</Link>
-        </div>
-        <Routing />
+      <Div className="I18n">
+        {this.renderLangButton('en')}
+        {this.renderLangButton('zh-Hans')}
+        {this.renderLangButton('zh-Hant')}
       </Div>
     )
   }
 }
 
-export default App;
+export default I18n;

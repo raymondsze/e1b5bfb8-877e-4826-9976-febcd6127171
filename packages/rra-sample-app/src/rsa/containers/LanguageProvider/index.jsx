@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 
 import reducers from './reducers';
 import { getLocale, getLocaleMessages } from './selectors';
-import { withReducers, withSagas } from '../../decorators';
+import { injectReducers } from '../../decorators';
 
 const mapStateToProps = createSelector(
   getLocale,
@@ -14,15 +14,10 @@ const mapStateToProps = createSelector(
   (locale, messages) => ({ locale, messages })
 );
 
-@withReducers(reducers)
-@connect(mapStateToProps)
-class LanguageProvider extends PureComponent {
-  static propTypes = {
-    locale: PropTypes.string.isRequired,
-    messages: PropTypes.object.isRequired,
-    children: PropTypes.element.isRequired,
-  };
+const withReducers = injectReducers(reducers);
+const withRedux = connect(mapStateToProps);
 
+class LanguageProvider extends Component {
   render() {
     const { locale, messages, children } = this.props;
     return (
@@ -37,4 +32,10 @@ class LanguageProvider extends PureComponent {
   }
 }
 
-export default LanguageProvider;
+LanguageProvider.propTypes = {
+  locale: PropTypes.string.isRequired,
+  messages: PropTypes.object.isRequired,
+  children: PropTypes.element.isRequired,
+};
+
+export default withReducers(withRedux(LanguageProvider));
