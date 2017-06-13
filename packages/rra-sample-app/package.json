@@ -18,6 +18,12 @@
     "zh-Hans",
     "zh-Hant"
   ],
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier-eslint --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "apollo-client": "^1.2.2",
     "babel-types": "^6.25.0",
@@ -69,6 +75,11 @@
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.0.1",
     "eslint-plugin-redux-saga": "^0.3.0",
+    "husky": "^0.13.4",
+    "lint-staged": "^3.6.1",
+    "prettier": "^1.4.4",
+    "prettier-eslint": "^6.3.0",
+    "prettier-eslint-cli": "^4.1.0",
     "stylelint": "^7.11.0",
     "stylelint-config-standard": "^16.0.0",
     "stylelint-processor-styled-components": "^0.1.2"

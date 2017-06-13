@@ -12,21 +12,17 @@ class I18n extends PureComponent {
   static propTypes = {
     intl: PropTypes.shape({}).isRequired,
     changeLocale: PropTypes.func.isRequired,
-  }
+  };
 
   handleLangButtonClick = (event) => {
     const { changeLocale } = this.props;
     changeLocale(event.target.getAttribute('data-value'));
-  }
+  };
 
   renderLangButton(locale) {
     const { intl } = this.props;
     return (
-      <button
-        className="App-lang-btn"
-        onClick={this.handleLangButtonClick}
-        data-value={locale}
-      >
+      <button className="App-lang-btn" onClick={this.handleLangButtonClick} data-value={locale}>
         {intl.formatMessage(messages[`languages-${locale}`])}
       </button>
     );

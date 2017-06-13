@@ -14,7 +14,7 @@ class App extends PureComponent {
   static propTypes = {
     intl: PropTypes.shape({}).isRequired,
     children: PropTypes.element.isRequired,
-  }
+  };
 
   render() {
     const { intl, children } = this.props;
@@ -30,7 +30,9 @@ class App extends PureComponent {
         <p
           className="App-intro"
           dangerouslySetInnerHTML={{
-            __html: intl.formatMessage(messages.instruction, { code: '<code>src/containers/App.js</code>' }),
+            __html: intl.formatMessage(messages.instruction, {
+              code: '<code>src/containers/App.js</code>',
+            }),
           }}
         />
         <div>
