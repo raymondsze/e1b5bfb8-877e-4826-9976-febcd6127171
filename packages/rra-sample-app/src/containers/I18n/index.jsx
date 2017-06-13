@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { injectIntl } from 'react-intl';
 
-import { withLocale } from '../../rsa';
+import { withLocale } from 'react-rsa';
 import Div from './styles';
 import messages from './messages';
 

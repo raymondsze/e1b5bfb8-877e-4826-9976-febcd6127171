@@ -9,7 +9,7 @@ import {
 const initialState = fromJS({
   locale: DEFAULT_LOCALE,
    // eslint-disable-next-line no-underscore-dangle
-  messages: global.__messages__,
+  messages: global.__messages__ || {},
 });
 
 export default {

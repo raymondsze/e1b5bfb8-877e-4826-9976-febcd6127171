@@ -1,4 +1,3 @@
 {
-  "extends": "eslint-config-rra",
-  "parser": "babel-eslint"
+  "extends": "eslint-config-rra"
 }

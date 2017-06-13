@@ -5,7 +5,7 @@ import { withRouter } from 'react-router';
 // Alternative solution of react-router-scroll for react-router v4
 class ScrollTop extends React.Component {
   static propTypes = {
-    location: PropTypes.string.isRequired,
+    location: PropTypes.shape({}).isRequired,
     children: PropTypes.element.isRequired,
   };
 

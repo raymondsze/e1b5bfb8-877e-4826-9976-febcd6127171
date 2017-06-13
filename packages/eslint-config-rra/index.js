@@ -29,12 +29,19 @@ module.exports = {
   },
   settings: {
     'import/ignore': ['node_modules'],
-    'import/extensions': ['.js'],
+    'import/extensions': {
+      js: 'never',
+      jsx: 'never', 
+      json: 'never',
+    },
     'import/resolver': {
       node: {
-        extensions: ['.js', '.json'],
+        extensions: ['.js', '.jsx', '.json'],
       },
     },
+    flowtype: {
+			onlyFilesWithFlowAnnotation: false,
+		},
   },
   rules: {
     // Reference: https://github.com/react-boilerplate/react-boilerplate/blob/master/package.json
@@ -49,9 +56,4 @@ module.exports = {
     'flowtype/type-id-match': ['error', '^([A-Z]+[a-z0-9A-Z]*)$'],
     'flowtype/require-valid-file-annotation': 'warn',
   },
-  settings: {
-		flowtype: {
-			onlyFilesWithFlowAnnotation: false,
-		},
-	},
 };

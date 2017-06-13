@@ -79,7 +79,6 @@ const eslintRule = config.module.rules.find(
 eslintRule.use[0].options.baseConfig = {
   extends: [require.resolve('eslint-config-rra')],
 };
-eslintRule.cache = true;
 
 // get the js loader rule
 const jsRule = config.module.rules.find(

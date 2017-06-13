@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import RSAProvider from './rsa/containers/RSAProvider';
+import { RSAProvider } from 'react-rsa';
 import App from './containers/App';
 
 import routes from './routes';
