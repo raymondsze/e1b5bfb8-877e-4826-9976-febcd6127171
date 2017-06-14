@@ -5,7 +5,18 @@
     "react"
   ],
   "plugins": [
-    "transform-decorators-legacy",
-    "external-helpers"
-  ]
+    "transform-decorators-legacy"
+  ],
+  "env": {
+    "commonjs": {
+      "plugins": [
+        ["transform-es2015-modules-commonjs", { "loose": true }]
+      ]
+    },
+    "rollup": {
+      "plugins": [
+        "external-helpers"
+      ]
+    }
+  }
 }
