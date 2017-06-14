@@ -2,12 +2,10 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { injectIntl } from 'react-intl';
 
-import { withLocale } from 'react-rsa';
+import { withLocale } from '../../rsa';
 import Div from './styles';
 import messages from './messages';
 
-@injectIntl
-@withLocale
 class I18n extends PureComponent {
   static propTypes = {
     intl: PropTypes.shape({}).isRequired,
@@ -39,4 +37,4 @@ class I18n extends PureComponent {
   }
 }
 
-export default I18n;
+export default injectIntl(withLocale(I18n));

@@ -8,8 +8,6 @@ import logo from './logo.svg';
 import Div from './styles';
 import messages from './messages';
 
-@withRouter
-@injectIntl
 class App extends PureComponent {
   static propTypes = {
     intl: PropTypes.shape({}).isRequired,
@@ -46,4 +44,4 @@ class App extends PureComponent {
   }
 }
 
-export default App;
+export default withRouter(injectIntl(App));
