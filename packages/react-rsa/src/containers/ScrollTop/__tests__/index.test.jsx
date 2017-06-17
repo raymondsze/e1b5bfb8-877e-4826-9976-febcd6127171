@@ -1,17 +1,24 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router';
-import { shallow } from 'enzyme';
+import { mount, shallow, render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { fromJS } from 'immutable';
 import ScrollTop from '../index';
 
 it('ScrollTop should only render children', () => {
-  const wrapper = shallow(
-    <MemoryRouter>
-      <ScrollTop>
-        <div>Test Scroll</div>
-      </ScrollTop>
-    </MemoryRouter>
+  const location = {
+    pathname: 'location',
+  };
+  const wrapper = mount(
+    <ScrollTop location={location}>
+      <div>Test Scroll</div>
+    </ScrollTop>
   );
-  expect(toJson(wrapper.find(ScrollTop))).toMatchSnapshot();
+  // this should not trigger render
+  wrapper.setProps({ location });
+  wrapper.setProps({
+    location: {
+      pathname: 'new-location',
+    },
+  });
 });

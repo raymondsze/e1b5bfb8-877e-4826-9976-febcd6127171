@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withRouter } from 'react-router';
 
 // Alternative solution of react-router-scroll for react-router v4
 class ScrollTop extends React.Component {
@@ -22,4 +21,4 @@ class ScrollTop extends React.Component {
   }
 }
 
-export default withRouter(ScrollTop);
+export default ScrollTop;

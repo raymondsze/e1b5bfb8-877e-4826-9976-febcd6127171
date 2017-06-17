@@ -1,9 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ScrollTop should only render children 1`] = `
-<withRouter(ScrollTop)>
+exports[`ScrollTop should only render children 1`] = `null`;
+
+exports[`ScrollTop should only render children 2`] = `
+<ScrollTop
+  location={
+    Object {
+      "pathname": "location",
+    }
+  }
+>
   <div>
     Test Scroll
   </div>
-</withRouter(ScrollTop)>
+</ScrollTop>
 `;

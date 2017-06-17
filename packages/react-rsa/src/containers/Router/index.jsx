@@ -23,8 +23,6 @@ class Router extends PureComponent {
   }
 
   getChildContext() {
-    console.log('getContext!!');
-    console.log(this.context.router);
     return {
       router: {
         ...this.context.router,
