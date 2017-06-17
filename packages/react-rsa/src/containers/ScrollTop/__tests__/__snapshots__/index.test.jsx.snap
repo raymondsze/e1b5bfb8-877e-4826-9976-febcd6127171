@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScrollTop should only render children 1`] = `
+<withRouter(ScrollTop)>
+  <div>
+    Test Scroll
+  </div>
+</withRouter(ScrollTop)>
+`;
