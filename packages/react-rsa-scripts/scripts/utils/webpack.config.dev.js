@@ -16,7 +16,7 @@ const location = 'react-scripts/config/webpack.config.dev';
 const config = require(location);
 
 const checkLangauges = require('./checkLanguages');
-const bootstrap = require('./bootstrap');
+// const bootstrap = require('./bootstrap');
 const TranslatePlugin = require('./TranslatePlugin');
 
 const entry = config.entry;
@@ -133,6 +133,7 @@ config.plugins.push.apply(config.plugins, [
     },
   }),
   new TranslatePlugin({
+    languages: require(paths.appPackageJson).languages,
     messagesDir: paths.appMessagesDir,
     translationsDir: paths.appTranslationsDir,
   }),
@@ -162,6 +163,6 @@ require.cache[require.resolve(location)].exports = config;
 
 // checkLangauges(paths);
 // bootstrap(paths, entry, path.join(paths.appBuild, '../bootstrap.js'), config.target);
-config.entry = [require.resolve(path.join(paths.appBuild, '../bootstrap.js'))];
+// config.entry = [require.resolve(path.join(paths.appBuild, '../bootstrap.js'))];
 
 module.exports = config;
