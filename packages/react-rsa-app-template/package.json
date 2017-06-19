@@ -12,8 +12,7 @@
     "build": "node ../react-rsa-scripts/bin/react-rsa-scripts build",
     "build:dll": "node ../react-rsa-scripts/bin/react-rsa-scripts build:dll",
     "build:server": "node ../react-rsa-scripts/bin/react-rsa-scripts build:server",
-    "lint": "eslint src/**/*.{js,jsx} && stylelint src/**/*.{js,jsx}",
-    "test": "node ../react-rsa-scripts/bin/react-rsa-scripts test"
+    "lint": "eslint src/**/*.{js,jsx} && stylelint src/**/*.{js,jsx}"
   },
   "languages": [
     "en",
