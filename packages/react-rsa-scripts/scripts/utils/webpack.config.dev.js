@@ -17,6 +17,7 @@ const config = require(location);
 
 const checkLangauges = require('./checkLanguages');
 const bootstrap = require('./bootstrap');
+const TranslatePlugin = require('./TranslatePlugin');
 
 const entry = config.entry;
 // do the config modification
@@ -100,6 +101,8 @@ jsRule.options.plugins = [
     },
   ],
 ];
+// https://github.com/yahoo/babel-plugin-react-intl/issues/47
+jsRule.options.cacheDirectory = false;
 
 // add graphql loader
 config.module.rules.push(
@@ -129,6 +132,10 @@ config.plugins.push.apply(config.plugins, [
       extends: require.resolve('stylelint-config-react-rsa-app'),
     },
   }),
+  new TranslatePlugin({
+    messagesDir: paths.appMessagesDir,
+    translationsDir: paths.appTranslationsDir,
+  }),
 ]);
 
 const hasVendorJs = fs.existsSync(paths.appVendorJs);
@@ -153,8 +160,8 @@ if (hasVendorJs) {
 
 require.cache[require.resolve(location)].exports = config;
 
-checkLangauges(paths);
-bootstrap(paths, entry, path.join(paths.appBuild, '../bootstrap.js'), config.target);
+// checkLangauges(paths);
+// bootstrap(paths, entry, path.join(paths.appBuild, '../bootstrap.js'), config.target);
 config.entry = [require.resolve(path.join(paths.appBuild, '../bootstrap.js'))];
 
 module.exports = config;
