@@ -1,5 +1,3 @@
-require('./languages');
-
 const clone = require('clone');
 const fs = require('fs');
 const path = require('path');
@@ -51,7 +49,7 @@ module.exports = {
     __filename: true,
   },
   devtool: 'source-map',
-  entry: [paths.appServerJs],
+  entry: [require.resolve('./dotenv'), paths.appServerJs],
   output: {
     path: paths.appServerBuild,
     libraryTarget: 'commonjs2',

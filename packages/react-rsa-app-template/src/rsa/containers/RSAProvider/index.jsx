@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
-import { createBrowserHistory } from 'history';
+import { /* createBrowserHistory, */ createMemoryHistory } from 'history';
 
 import LanguageProvider from '../LanguageProvider';
 import RouteProvider from '../RouteProvider';
 
 import configureStore from '../../configureStore';
 
-const history = createBrowserHistory();
+const history = createMemoryHistory();
 
 class RSAProvider extends Component {
   static defaultProps = {

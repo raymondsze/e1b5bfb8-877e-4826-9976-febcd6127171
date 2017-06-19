@@ -11,7 +11,6 @@ switch (script) {
   case 'eject':
   case 'start':
   case 'start:server':
-  case 'translate':
   case 'test': {
     const result = spawn.sync(
       'node',
