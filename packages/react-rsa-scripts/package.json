@@ -25,6 +25,8 @@
     "extract-text-webpack-plugin": "2.1.0",
     "file-loader": "0.10.1",
     "graphql-tag": "2.1.0",
+    "html-webpack-exclude-assets-plugin": "0.0.5",
+    "html-webpack-include-assets-plugin": "0.0.5",
     "ignore-loader": "0.1.2",
     "image-webpack-loader": "3.3.1",
     "intl-locales-supported": "^1.0.0",

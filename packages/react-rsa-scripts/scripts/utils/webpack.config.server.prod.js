@@ -3,6 +3,9 @@ const fs = require('fs');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const webpack = require('webpack');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
+const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 const paths = require('./paths');
 const config = require('./webpack.config.prod');
 
@@ -42,6 +45,9 @@ fileRule.options = {
   emitFile: false,
 };
 
+const htmlWebpackPlugin = config.plugins.find(plugin => plugin.constructor.name === 'HtmlWebpackPlugin');
+htmlWebpackPlugin.options.excludeAssets = [/index.js/];
+
 module.exports = {
   target: 'node',
   node: {
@@ -68,9 +74,18 @@ module.exports = {
   ],
   plugins: config.plugins.filter(
     plugin => (
+      plugin.constructor.name === 'HtmlWebpackPlugin' ||
       plugin.constructor.name === 'DefinePlugin'
     )
   ).concat([
+    new HtmlWebpackIncludeAssetsPlugin({
+      // TODO: read assets.json file and put the assets
+      assets: [],
+    }),
+    new HtmlWebpackExcludeAssetsPlugin(),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'defer',
+    }),
     new webpack.BannerPlugin({
       banner: fs.readFileSync(path.join(__dirname, './sourceMapSupport.js'), 'utf-8'),
       include: /\.jsx?$/,
